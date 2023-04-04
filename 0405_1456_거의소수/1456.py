@@ -1,29 +1,26 @@
-import math
+A, B = list(map(int, input().split()))
 
-A = 1
-B = 10
-arr = list(range(B+1))
-
-prime_list = [True] * (B+1)
+prime_list = list(range(0, B+1))
 
 for i in range(2, int(B ** 0.5)+1):
-    for j in range(i+i, B+1, i):
-        prime_list[j] = False
+    if prime_list[i] > 0:
+        for j in range(i+i, B+1, i):
+            prime_list[j] = -1
 
-prime_list = prime_list[A:]
-prime_nums = []
-for idx in range(len(prime_list)):
-    if prime_list[idx] == True:
-        prime_nums.append(idx+A)
-
-print(prime_nums)
+prime_list[0] = -1
+prime_list[1] = -1
 
 count = 0
-for num in prime_nums[1:]:
-    if (num**2 < B+1) and (num**2 > A):
-        print(num**2)
-        count += 1
-    else:
-        break
+for num in range(len(prime_list)):
+    cur_num  = prime_list[num]
+    if cur_num > 0:
+        i = 2
+        while True:
+            
+            if (cur_num**i <= B) and (cur_num**i >= A):
+                count += 1
+                i += 1
+            else:
+                break
 
 print(count)

@@ -3,7 +3,6 @@ input_str = input()
 def str_plus(plus_str):
     return sum(list(map(int,plus_str.split("+"))))
 
-
 cur_sum = 0
 init = input_str.split("-")[0]
 
